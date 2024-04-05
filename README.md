@@ -508,7 +508,7 @@ sudo docker compose -f docker-compose-slicing-bank-nrf.yaml up -d
 ```
 - Run the slicing setup script
 ```
-cd oai-cn5g-fed/docker-compose
+cd 5G-ovs-integration//docker-compose
 chmod +x run.sh
 sudo ./run.sh
 ```
@@ -566,6 +566,19 @@ sudo docker compose -f docker-compose-slicing-bank-nrf.yaml down
 ```
 In gNB PC
 ```
-cd ci-scripts/yaml_files/sa_b200_gnb/
+cd oai-gnodeb/ci-scripts/yaml_files/sa_b200_gnb/
 sudo docker-compose down
 ```
+
+
+
+
+
+Issues:
+------------
+Whenever UE connected But not getting Internet.
+
+In UE:
+```Go to settings > Access point Names > Update APN ```
+
+For APN Name go to oai_db3.sql file which located in database and check the values of SST and SD. Then go to docker-compose-basic-nrf.yaml file and check  SST and SD values in oai-amf section according to that values check DNN_NI in oai-smf section. Here the DNN_NI Name is APN. Update and reconnect we will get Internet.
